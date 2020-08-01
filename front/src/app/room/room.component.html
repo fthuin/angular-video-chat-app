@@ -1,0 +1,14 @@
+<div class="video-grid">
+  <div *ngFor="let video of videos">
+    <span *ngIf="video.userId !== currentUserId; else currentUserVideoLabel">{{ video.userId }}</span>
+    <ng-template #currentUserVideoLabel>
+      <span>You</span>
+    </ng-template>
+    <video
+      [srcObject]="video.srcObject"
+      (loadedmetadata)="onLoadedMetadata($event)"
+      [muted]="video.muted"
+    >
+    </video>
+  </div>
+</div>
